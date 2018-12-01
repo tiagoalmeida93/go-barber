@@ -1,0 +1,7 @@
+{% for messages in flashSuccess  %}
+    <div class="alert alert-success">{{ messages }}</div>
+{% endfor %}
+
+{% for messages in flashError  %}
+    <div class="alert alert-danger">{{ messages }}</div>
+{% endfor %}

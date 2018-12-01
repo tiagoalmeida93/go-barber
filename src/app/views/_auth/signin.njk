@@ -1,0 +1,19 @@
+<!--
+* Formulário responsável por criar um novo usuário no sistema
+ -->
+
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+  <form action="/signin" method="POST">
+    <img src="/images/logo.svg" height="42" />
+ 
+    {% include "_partials/flash.njk" %}
+
+    <input name="email" type="email" placeholder="Seu melhor e-mail" required autofocus />
+    <input name="password" type="password" placeholder="Senha secreta" required />
+
+    <button type="submit">Entrar</button>
+    <a href="/signup">Criar conta gratuita</a>
+  </form>
+{% endblock %}
