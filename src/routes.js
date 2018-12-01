@@ -2,14 +2,15 @@ const express = require('express')
 const multerConfig = require('./config/multer')
 const upload = require('multer')(multerConfig)
 
-// Import Controllers
+// Import as Controllers
 const userController = require('./app/controllers/UserController')
 const SessionContrller = require('./app/controllers/SessionController')
 const DashboardController = require('./app/controllers/DashboardController')
 
-// Impor middlewares
+// Importa os middlewares
 const authMiddleware = require('./app/middlewares/auth')
 const guesMiddleware = require('./app/middlewares/guest')
+const FileController = require('./app/controllers/FileController')
 
 // Inicia o express para tratar as rotas
 const routes = express.Router()
@@ -21,6 +22,9 @@ routes.use((req, res, next) => {
 
   return next()
 })
+
+// Rota para servir as images dos usuários
+routes.get('/file/:file', FileController.show)
 
 // Autenticação
 routes.get('/', guesMiddleware, SessionContrller.create)
