@@ -268,3 +268,38 @@ routes.use((req, res, next) => {
 ```
 
 Para mais detalhes, consultar a documentação do `connect-flash`.<br>
+
+### Listando os avatares(imgs)
+
+Para listarmos as fotos dos providers, foi criado uma controller `FileController` com um método capaz de retornar o path de armazenamento da imagem. A classe é:
+
+```javascript
+const path = require("path");
+
+class FileController {
+  show(req, res) {
+    const { file } = req.params;
+
+    const filePath = path.resolve(
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "tmp",
+      "uploads",
+      file
+    );
+
+    return res.sendFile(filePath);
+  }
+}
+
+module.exports = new FileController();
+```
+
+Feito isso, foi adicionado uma rota, que chama o método show e exibe a imagem.
+
+### Model e Migration Agendamento
+
+Foi criada a model e migration de appointmenrs. <br>
+Para as alterações reflettirem no banco de dados, deve-se rodas a migration `npx db:migration`.

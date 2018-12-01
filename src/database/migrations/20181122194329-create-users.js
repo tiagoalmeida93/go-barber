@@ -1,5 +1,8 @@
 'use strict'
 
+/**
+ * @description: Cria a tabela users
+ */
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
