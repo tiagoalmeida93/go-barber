@@ -303,3 +303,19 @@ Feito isso, foi adicionado uma rota, que chama o método show e exibe a imagem.
 
 Foi criada a model e migration de appointmenrs. <br>
 Para as alterações reflettirem no banco de dados, deve-se rodas a migration `npx db:migration`.
+
+### Formulário de agendamento
+
+O formulário foi criando em uma view de visualização do provider. <br>
+A única dependência da view é uma lib chamad flatpickr, que formata e captura a data selecionada em um input.
+
+### Horários disponíveis
+
+A controller AvailableController será encarregada de tratar os horários disponíveis. <br>
+Para tratarmos as data/horários disponíveis, é necessário respeitar algumas regras de negócio, são elas:
+
+1. A data não pode ser menos que a data atual(opção passada na inicialização do flatpickr)
+2. O horário não pode ser menor que o horário atual
+3. O Horário deve estar disponível para agendamento
+
+Para isso, foi instalado a lib `moment` (indicada para lidar com datas e horários no js) e essa lib foi importada na controller AvailableController. <br>

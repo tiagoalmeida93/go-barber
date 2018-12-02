@@ -8,6 +8,7 @@ const SessionContrller = require('./app/controllers/SessionController')
 const DashboardController = require('./app/controllers/DashboardController')
 const FileController = require('./app/controllers/FileController')
 const AppointmenteController = require('./app/controllers/AppointmentController')
+const AvailableController = require('./app/controllers/AvailableController')
 
 // Importa os middlewares
 const authMiddleware = require('./app/middlewares/auth')
@@ -45,5 +46,8 @@ routes.use('/app', authMiddleware)
 // Logged routes
 routes.get('/app/dashboard', DashboardController.index)
 routes.get('/app/appointments/new/:provider', AppointmenteController.create)
+
+// Horários disponíveis
+routes.get('/app/available/:provider', AvailableController.index)
 
 module.exports = routes

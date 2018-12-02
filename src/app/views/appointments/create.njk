@@ -10,5 +10,31 @@
                 <strong>{{ provider.name }}</strong>
             </div>
         </div>
-    </div>    
+
+        <form action="/app/appointments/new/{{ provider.id }}" method="POST">
+            <input type="text" class="flatpickr" placeholder="Escolha uma data" required />
+
+            <div id="hours"></div>
+
+            <button type="submit">Agendar</button>
+        </form>
+    </div>
+
+
+    <script>
+        flatpickr('.flatpickr', {
+            minDate: new Date(),
+            dateFormat: 'd/m/y',
+            allowInput:true,
+            onChange: function(date){
+                // Envia a data selecionada via ajax no formato timestamp
+                fetch(`/app/available/{{ provider.id }}?date=${date[0].getTime()}`)
+                .then(function(response) {
+                    response.text().then(function(html) {
+                        document.getElementById('hours').innerHTML = html
+                    })
+                })
+            }
+        })
+    </script>    
 {% endblock %}
