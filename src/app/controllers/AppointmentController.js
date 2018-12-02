@@ -22,6 +22,9 @@ class AppointmentController {
 
   async show (req, res) {
     const { id } = req.session.user
+    const { provider } = req.session.user
+
+    if (!provider) return res.redirect('/')
 
     const appointments = await Appointment.findAll({
       include: [{ model: User, as: 'user' }],
