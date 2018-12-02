@@ -42,12 +42,11 @@ routes.get('/', guesMiddleware, SessionContrller.create)
 routes.post('/signin', SessionContrller.store)
 routes.get('/app/logout', SessionContrller.destroy)
 routes.use('/app', authMiddleware)
-
-// Logged routes
 routes.get('/app/dashboard', DashboardController.index)
-routes.get('/app/appointments/new/:provider', AppointmenteController.create)
 
-// Horários disponíveis
+// Appointments
+routes.get('/app/appointments/new/:provider', AppointmenteController.create)
 routes.get('/app/available/:provider', AvailableController.index)
+routes.post('/app/appointments/new/:provider', AppointmenteController.store)
 
 module.exports = routes

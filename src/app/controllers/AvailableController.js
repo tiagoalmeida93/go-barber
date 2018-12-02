@@ -49,11 +49,11 @@ class AvailableController {
        * dessa forma, retorna o available como true ou false dependendo da condição
        */
       return {
-        time,
-        value: value.format(),
+        time, // Lista com todos os horários
+        value: value.format(), // Data e horário atual
         available:
           value.isAfter(moment()) &&
-          !appointments.find(a => moment(a.data).format('HH:mm') === time)
+          !appointments.find(a => moment(a.data).format('HH:mm') === time) // Verifica se a data ou horário já passou ou se já está com agendamento
       }
     })
 

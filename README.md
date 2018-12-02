@@ -319,3 +319,11 @@ Para tratarmos as data/horários disponíveis, é necessário respeitar algumas 
 3. O Horário deve estar disponível para agendamento
 
 Para isso, foi instalado a lib `moment` (indicada para lidar com datas e horários no js) e essa lib foi importada na controller AvailableController. <br>
+
+Na controller AvailableController, o método index() recebe uma data fornecida pelo usuário em timestamp que é convertida para inteiro. <br>
+Depois é feita uma consulta no banco de dados, trazendo todos os agendamentos do provider necessário na data informada. <br>
+Com isso, é gerado um objeto de resposta que contém as seguintes informações:
+
+- Lista com todos os horários disponíveis
+- Data e horário atual
+- Se a data ou horário já passou ou se já possui agendamento
